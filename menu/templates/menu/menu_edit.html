@@ -1,0 +1,21 @@
+{% extends 'menu/base.html' %}
+
+{% block content %}
+            <div class="row">
+                <div class="col-md-8">
+                    {% if menu %}
+                    <h1>Change menu</h1>
+                    <!-- <p>Season: {{menu.season}}</p>
+                    <p>Items: {{menu.items}}</p>
+                    <p>Expiration date: {{menu.expiration_date}}</p> -->
+                    {% endif %}
+                    {% if not menu %}
+                    <h1>New Menu</h1>
+                    {% endif %}
+                    <form method="POST" class="menu-form">{% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="save btn btn-default">Save</button>
+                    </form>
+                </div>
+            </div>
+{% endblock %}
